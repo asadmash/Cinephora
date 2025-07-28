@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import Search from './components/Search';
 
+const API_BASE_URL = ' https://api.themoviedb.org/3';
 
 const App = () => {
   // CREATE A STATE TO PASS searchTerm PROPS TO SEARCH BAR CHILD COMPONENT

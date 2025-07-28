@@ -4,6 +4,8 @@ import Search from './components/Search';
 
 const API_BASE_URL = ' https://api.themoviedb.org/3';
 
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+
 const App = () => {
   // CREATE A STATE TO PASS searchTerm PROPS TO SEARCH BAR CHILD COMPONENT
 const [searchTerm, setSearchTerm] = useState('');

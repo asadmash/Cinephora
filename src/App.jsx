@@ -42,8 +42,13 @@ const data = await response.json();
 
 // another error handling
 if(data.response === 'false'){
-  setErrorMessage(data.Error || 'Failed to fetch movies.')
+  setErrorMessage(data.Error || 'Failed to fetch movies.');
+  // set movies list to blank
+  setMovieList([]);
+  return;
 }
+// populate the moviesList array with the data
+setMovieList(data.result || []);
   } catch(error){
     console.error(`Error fetching movies: ${error}`);
     setErrorMessage('Error fetching movies, Please try again later.')

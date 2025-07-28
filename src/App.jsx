@@ -20,6 +20,12 @@ const [searchTerm, setSearchTerm] = useState('');
 // state for error showcase
 const  [errorMessage, setErrorMessage] = useState('');
 
+// state for storing movies data after fetch
+const [movieList, setMovieList] = useState([]);
+
+// loading state
+const [isLoading, setIsLoading] = useState(false);
+
 // function to fetch movies data
 const fetchMovies = async () => {
   try{

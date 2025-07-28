@@ -1,6 +1,7 @@
 // IMPORT THE SEACH COMPONENT
 import { useEffect, useState } from "react";
 import Search from "./components/Search";
+import Spinner from "./components/Spinner";
 // API BASE URL
 const API_BASE_URL = " https://api.themoviedb.org/3";
 // API KEY
@@ -89,7 +90,7 @@ const App = () => {
             <h2>All Movies</h2>
             {/* conditionally check every state and load appropriate content */}
             {isLoading ? (
-              <p className="text-white">Loading...</p>
+              <Spinner />
             ) : errorMessage ? (
               <p className="text-red-500">{errorMessage}</p>
             ) : (

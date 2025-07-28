@@ -4,7 +4,7 @@ import Search from './components/Search';
 
 const App = () => {
   // STEP:05-> CREATE A STATE TO PASS searchTerm PROPS TO SEARCH BAR CHILD COMPONENT
-const [searchTerm, setSearchTerm] = useState('I am the one');
+const [searchTerm, setSearchTerm] = useState('');
   return (
     <main>
       <div className="pattern">

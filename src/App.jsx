@@ -1,11 +1,18 @@
 // IMPORT THE SEACH COMPONENT
 import { useEffect, useState } from 'react';
 import Search from './components/Search';
-
+// API BASE URL
 const API_BASE_URL = ' https://api.themoviedb.org/3';
-
+// API KEY
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-
+// API OPTIONS
+const API_OPTIONS = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: `Bearer ${API_KEY}`
+  }
+}
 const App = () => {
   // CREATE A STATE TO PASS searchTerm PROPS TO SEARCH BAR CHILD COMPONENT
 const [searchTerm, setSearchTerm] = useState('');

@@ -25,7 +25,7 @@ const App = () => {
   const [movieList, setMovieList] = useState([]);
 
   // loading state
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   // function to fetch movies data
   const fetchMovies = async () => {
@@ -54,13 +54,13 @@ const App = () => {
       }
       // populate the moviesList array with the data
       setMovieList(data.results || []);
-      console.log(data.results);
+      // console.log(data.results);
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
       setErrorMessage("Error fetching movies, Please try again later.");
     } finally {
       // make the loading false
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
 
@@ -87,7 +87,7 @@ const App = () => {
 
           {/* show error message */}
           <section className="all-movies">
-            <h2>All Movies</h2>
+            <h2 className="mt-[40px]">All Movies</h2>
             {/* conditionally check every state and load appropriate content */}
             {isLoading ? (
               <Spinner />
@@ -96,7 +96,7 @@ const App = () => {
             ) : (
               <ul>
                 {movieList.map((movie) => (
-                  <p className="text-white">{movie.title}</p>
+                  <p key={movie.id} className="text-white">{movie.title}</p>
                 ))}
               </ul>
             )}

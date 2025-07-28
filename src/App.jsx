@@ -23,7 +23,21 @@ const  [errorMessage, setErrorMessage] = useState('');
 // function to fetch movies data
 const fetchMovies = async () => {
   try{
+    // the fetching endpoint
+const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+// get the response
+const response = await fetch(endpoint, API_OPTIONS);
+// if the response is not ok
+if(!response.ok){
+  throw new Error(`Failed to fetch movies.`);
+}
+// parse the response
+const data = await response.json();
 
+// another error handling
+if(data.response === 'false'){
+  setErrorMessage(data.Error || 'Failed to fetch movies.')
+}
   } catch(error){
     console.error(`Error fetching movies: ${error}`);
     setErrorMessage('Error fetching movies, Please try again later.')
@@ -32,7 +46,7 @@ const fetchMovies = async () => {
 
 // useEffect hook for movie fethching
 useEffect(() => {
-  
+  fetchMovies();
 }, [])
 
   return (

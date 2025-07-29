@@ -54,8 +54,8 @@ This project was built as a **hands-on learning journey**, allowing me to apply 
 
 ## 📦 Project Structure
 
-├── public/ -
-│ ├── hero-bg.png -
+├── public/ |
+│ ├── hero-bg.png |
 │ ├── hero-img.png
 │ ├── logo.png
 │ ├── no-poster.png

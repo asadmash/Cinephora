@@ -118,14 +118,26 @@ useEffect(() => {
             <img src="./hero-img.png" alt="hero-banner" />
             {/*  CREATE A HEADER AND DUMMY SEARCH ELEMENT */}
             <h1>
-              Find <span className="text-gradient">Movies</span> You'll Enjoy
-              Without the Hassle
+              Find Your Next Favorite Film <span className="text-gradient">Fast & Easy.</span>
             </h1>
             {/* IMPORT THE SEARCH COMPONENT,  PASS THE STATE PROPS */}
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </header>
           {/* trending movies ui and conditional rendering logic */}
+{trendingMovies.length > 0 && (
+  <section className="trending">
+    <h2>Trending Movies</h2>
 
+    <ul>
+      {trendingMovies.map((movie, index) => (
+        <li key={movie.$id}>
+<p>{index + 1}</p>
+<img src={movie.poster_url} alt={movie.title} />
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
        
           <section className="all-movies">
             <h2>All Movies</h2>

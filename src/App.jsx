@@ -4,6 +4,7 @@ import Search from "./components/Search";
 import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
 import { useDebounce } from "react-use";
+import { UpdateSearchCount } from "./appwrite";
 
 // API BASE URL
 const API_BASE_URL = " https://api.themoviedb.org/3";
@@ -65,6 +66,11 @@ const App = () => {
       // populate the moviesList array with the data
       setMovieList(data.results || []);
       // console.log(data.results);
+
+      // trigger the search count update when a query result exists
+      if(query && data.results.length > 0){
+        await UpdateSearchCount(query, data.results[0])
+      }
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
       setErrorMessage("Error fetching movies, Please try again later.");

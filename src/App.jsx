@@ -124,7 +124,7 @@ useEffect(() => {
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </header>
           {/* trending movies ui and conditional rendering logic */}
-{trendingMovies.length > 0 && (
+{/* {trendingMovies.length > 0 && (
   <section className="trending">
     <h2>Trending Movies</h2>
 
@@ -137,7 +137,7 @@ useEffect(() => {
       ))}
     </ul>
   </section>
-)}
+)} */}
        
           <section className="all-movies">
             <h2>All Movies</h2>

@@ -7,7 +7,8 @@ import { useDebounce } from "react-use";
 import { getTrendingMovies, UpdateSearchCount } from "./appwrite";
 
 // API BASE URL
-const API_BASE_URL = " https://api.themoviedb.org/3";
+const API_BASE_URL = "https://api.themoviedb.org/3";
+// const API_BASE_URL = 'https://api.themoviedb.org/3';
 // API KEY
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 // API OPTIONS
@@ -39,7 +40,6 @@ const App = () => {
 
   // debounce the search term to prevent too many api request
   useDebounce(() => setDebouncedSearchTerm(searchTerm), 800, [searchTerm]);
-
 
   // function to fetch movies data
   const fetchMovies = async (query = "") => {
@@ -73,8 +73,8 @@ const App = () => {
       // console.log(data.results);
 
       // trigger the search count update when a query result exists
-      if(query && data.results.length > 0){
-        await UpdateSearchCount(query, data.results[0])
+      if (query && data.results.length > 0) {
+        await UpdateSearchCount(query, data.results[0]);
       }
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
@@ -85,29 +85,25 @@ const App = () => {
     }
   };
 
- // function to deal with trending movies data
-const loadTrendingMovies  = async () =>{
-  try {
-    const movies = await getTrendingMovies();
-    setTrendingMovies(movies);
-  } catch (error) {
-    console.error(`Error fetching trending movies:${error}`);
-    
-  }
-}
-
+  // function to deal with trending movies data
+  const loadTrendingMovies = async () => {
+    try {
+      const movies = await getTrendingMovies();
+      setTrendingMovies(movies);
+    } catch (error) {
+      console.error(`Error fetching trending movies:${error}`);
+    }
+  };
 
   // useEffect hook for movie fethching
   useEffect(() => {
     fetchMovies(debouncedSearchTerm);
   }, [debouncedSearchTerm]);
 
-
   // effect for show trending movies
-useEffect(() => {
- loadTrendingMovies();
-}, [])
-
+  useEffect(() => {
+    loadTrendingMovies();
+  }, []);
 
   return (
     <main>
@@ -118,27 +114,28 @@ useEffect(() => {
             <img src="./hero-img.png" alt="hero-banner" />
             {/*  CREATE A HEADER AND DUMMY SEARCH ELEMENT */}
             <h1>
-              Find Your Next Favorite Film <span className="text-gradient">Fast & Easy.</span>
+              Find Your Next Favorite Film{" "}
+              <span className="text-gradient">Fast & Easy.</span>
             </h1>
             {/* IMPORT THE SEARCH COMPONENT,  PASS THE STATE PROPS */}
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </header>
           {/* trending movies ui and conditional rendering logic */}
-{trendingMovies.length > 0 && (
-  <section className="trending">
-    <h2>Trending Movies</h2>
+          {trendingMovies.length > 0 && (
+            <section className="trending">
+              <h2>Trending Movies</h2>
 
-    <ul>
-      {trendingMovies.map((movie, index) => (
-        <li key={movie.$id}>
-<p>{index + 1}</p>
-<img src={movie.poster_url} alt={movie.title} />
-        </li>
-      ))}
-    </ul>
-  </section>
-)}
-       
+              <ul>
+                {trendingMovies.map((movie, index) => (
+                  <li key={movie.$id}>
+                    <p>{index + 1}</p>
+                    <img src={movie.poster_url} alt={movie.title} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           <section className="all-movies">
             <h2>All Movies</h2>
             {/* conditionally check every state and load appropriate content */}

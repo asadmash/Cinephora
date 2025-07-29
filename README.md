@@ -54,36 +54,38 @@ This project was built as a **hands-on learning journey**, allowing me to apply 
 
 ## 📦 Project Structure
 
-├── public/ |
-│ ├── hero-bg.png |
-│ ├── hero-img.png
-│ ├── logo.png
-│ ├── no-poster.png
-│ ├── rating.svg
-│ └── search.svg
+```bash
+├── public/
+│   ├── hero-bg.png
+│   ├── hero-img.png
+│   ├── logo.png
+│   ├── no-poster.png
+│   ├── rating.svg
+│   └── search.svg
 │
 ├── src/
-│ ├── assets/ # Static assets (if used inside React)
-│ ├── components/ # Reusable UI components
-│ │ ├── MovieCard.jsx
-│ │ ├── Search.jsx
-│ │ └── Spinner.jsx
-│ ├── App.jsx # Root component
-│ ├── appwrite.js # Appwrite configuration and logic
-│ ├── main.jsx # Entry point for React
-│ ├── App.css # Component-level styles
-│ └── index.css # Global styles
+│   ├── assets/                 # Static assets (if used inside React)
+│   ├── components/             # Reusable UI components
+│   │   ├── MovieCard.jsx
+│   │   ├── Search.jsx
+│   │   └── Spinner.jsx
+│   ├── App.jsx                 # Root component
+│   ├── appwrite.js             # Appwrite configuration and logic
+│   ├── main.jsx                # Entry point for React
+│   ├── App.css                 # Component-level styles
+│   └── index.css               # Global styles
 │
-├── .env.local # Environment variables (excluded from git)
-├── index.html # Base HTML template used by Vite
-├── vite.config.js # Vite project configuration
-├── package.json # Project metadata and dependencies
-├── package-lock.json # Dependency lock file
-├── eslint.config.js # Linting rules
-├── .gitignore # Ignored files in version control
-├── dist/ # Build output (auto-generated)
-├── node_modules/ # Installed dependencies (auto-generated)
-└── README.md # Project documentation (you’re reading it!)
+├── .env.local                  # Environment variables (excluded from git)
+├── index.html                  # Base HTML template used by Vite
+├── vite.config.js              # Vite project configuration
+├── package.json                # Project metadata and dependencies
+├── package-lock.json           # Dependency lock file
+├── eslint.config.js            # Linting rules
+├── .gitignore                  # Git ignored files
+├── dist/                       # Production build output (auto-generated)
+├── node_modules/               # Installed dependencies (auto-generated)
+└── README.md                   # Project documentation
+```
 
 ## 🎨 Design & Resources
 

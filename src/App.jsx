@@ -4,7 +4,7 @@ import Search from "./components/Search";
 import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
 import { useDebounce } from "react-use";
-import { UpdateSearchCount } from "./appwrite";
+import { getTrendingMovies, UpdateSearchCount } from "./appwrite";
 
 // API BASE URL
 const API_BASE_URL = " https://api.themoviedb.org/3";
@@ -28,6 +28,9 @@ const App = () => {
   // state for storing movies data after fetch
   const [movieList, setMovieList] = useState([]);
 
+  // state for tending movies
+  const [trendingMovies, setTrendingMovies] = useState([]);
+
   // loading state
   const [isLoading, setIsLoading] = useState(false);
 
@@ -36,6 +39,8 @@ const App = () => {
 
   // debounce the search term to prevent too many api request
   useDebounce(() => setDebouncedSearchTerm(searchTerm), 800, [searchTerm]);
+
+
   // function to fetch movies data
   const fetchMovies = async (query = "") => {
     // turn on the loading
@@ -79,6 +84,18 @@ const App = () => {
       setIsLoading(false);
     }
   };
+
+// function to deal with trending movies data
+const loadTrendingMovies  = async () =>{
+  try {
+    const movies = await getTrendingMovies();
+    setTrendingMovies(movies);
+  } catch (error) {
+    console.error('Error fetching trending movies. Please try again later.');
+    
+  }
+}
+
 
   // useEffect hook for movie fethching
   useEffect(() => {

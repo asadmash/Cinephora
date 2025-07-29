@@ -7,8 +7,8 @@ import { useDebounce } from "react-use";
 import { getTrendingMovies, UpdateSearchCount } from "./appwrite";
 
 // API BASE URL
+// const API_BASE_URL = "https://api.themoviedb.org/3";
 const API_BASE_URL = "https://api.themoviedb.org/3";
-// const API_BASE_URL = 'https://api.themoviedb.org/3';
 // API KEY
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 // API OPTIONS

@@ -85,16 +85,16 @@ const App = () => {
     }
   };
 
-// function to deal with trending movies data
-const loadTrendingMovies  = async () =>{
-  try {
-    const movies = await getTrendingMovies();
-    setTrendingMovies(movies);
-  } catch (error) {
-    console.error(`Error fetching trending movies:${error}`);
+// // function to deal with trending movies data
+// const loadTrendingMovies  = async () =>{
+//   try {
+//     const movies = await getTrendingMovies();
+//     setTrendingMovies(movies);
+//   } catch (error) {
+//     console.error(`Error fetching trending movies:${error}`);
     
-  }
-}
+//   }
+// }
 
 
   // useEffect hook for movie fethching

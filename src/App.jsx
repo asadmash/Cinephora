@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Search from "./components/Search";
 import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
+import { useDebounce } from "react-use";
+
 // API BASE URL
 const API_BASE_URL = " https://api.themoviedb.org/3";
 // API KEY
@@ -28,15 +30,22 @@ const App = () => {
   // loading state
   const [isLoading, setIsLoading] = useState(false);
 
+  // debounce state
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
+
+  // debounce the search term to prevent too many api request
+  useDebounce(() => setDebouncedSearchTerm(searchTerm), 800, [searchTerm]);
   // function to fetch movies data
-  const fetchMovies = async (query = '') => {
+  const fetchMovies = async (query = "") => {
     // turn on the loading
     setIsLoading(true);
     // reset set error message
     setErrorMessage("");
     try {
       // the fetching endpoint
-      const endpoint = query ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}` : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+      const endpoint = query
+        ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
+        : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
       // get the response
       const response = await fetch(endpoint, API_OPTIONS);
       // if the response is not ok
@@ -67,8 +76,8 @@ const App = () => {
 
   // useEffect hook for movie fethching
   useEffect(() => {
-    fetchMovies(searchTerm);
-  }, [searchTerm]);
+    fetchMovies(debouncedSearchTerm);
+  }, [debouncedSearchTerm]);
 
   return (
     <main>
@@ -98,7 +107,7 @@ const App = () => {
               <ul>
                 {movieList.map((movie) => (
                   // pass props to movie card
-                 <MovieCard key={movie.id} movie={movie} />
+                  <MovieCard key={movie.id} movie={movie} />
                 ))}
               </ul>
             )}

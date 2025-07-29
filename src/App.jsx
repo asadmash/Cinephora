@@ -91,7 +91,7 @@ const loadTrendingMovies  = async () =>{
     const movies = await getTrendingMovies();
     setTrendingMovies(movies);
   } catch (error) {
-    console.error('Error fetching trending movies. Please try again later.');
+    console.error(`Error fetching trending movies:${error}`);
     
   }
 }
@@ -101,6 +101,13 @@ const loadTrendingMovies  = async () =>{
   useEffect(() => {
     fetchMovies(debouncedSearchTerm);
   }, [debouncedSearchTerm]);
+
+
+  // effect for show trending movies
+useEffect(() => {
+ loadTrendingMovies();
+}, [])
+
 
   return (
     <main>
@@ -117,10 +124,11 @@ const loadTrendingMovies  = async () =>{
             {/* IMPORT THE SEARCH COMPONENT,  PASS THE STATE PROPS */}
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </header>
+          {/* trending movies ui and conditional rendering logic */}
 
-          {/* show error message */}
+       
           <section className="all-movies">
-            <h2 className="mt-[40px]">All Movies</h2>
+            <h2>All Movies</h2>
             {/* conditionally check every state and load appropriate content */}
             {isLoading ? (
               <Spinner />

@@ -104,9 +104,9 @@ const App = () => {
 
 
   // effect for show trending movies
-useEffect(() => {
- loadTrendingMovies();
-}, [])
+// useEffect(() => {
+//  loadTrendingMovies();
+// }, [])
 
 
   return (
